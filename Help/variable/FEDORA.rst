@@ -1,0 +1,5 @@
+FEDORA
+-------
+
+Set to ``1`` when the target system distro (:variable:`FEDORA`) is
+``1``.   

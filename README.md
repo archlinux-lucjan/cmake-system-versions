@@ -1,5 +1,5 @@
 # CMake System Version
 
-CMake extension.
+CMake extension for detecting linux distributions and other system versions.
 
-Work in progress.
+Work in progress (Backup)

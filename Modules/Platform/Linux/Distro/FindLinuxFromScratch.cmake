@@ -1,0 +1,42 @@
+
+set(LINUX_FROM_SCRATCH 0)
+
+include(Platform/Linux/Distro/FindDetectFiles)
+
+
+if(CAT AND SED)
+    if(DEFINED LINUX_FROM_SCRATCH)
+        if(EXISTS /etc/os-release)
+            if(${OS_RELEASE_DISTRO} MATCHES "Linux From Scratch")
+                set(LINUX_FROM_SCRATCH 1)
+            else()
+                set(LINUX_FROM_SCRATCH 0)
+            endif()
+        elseif(EXISTS /etc/lfs-release)
+            exec_program(${CAT} ARGS /etc/lfs-release OUTPUT_VARIABLE DISTRO_RELEASE_TEXT)
+            exec_program(${SED} ARGS ${DISTRO_RELEASE_REGEX} ${DISTRO_RELEASE_TEXT} OUTPUT_VARIABLE DISTRO_RELEASE_DISTRO)
+            string(FIND ${DISTRO_RELEASE_DISTRO} "Linux From Scratch" LINUX_FROM_SCRATCH_POSITION)
+            if(${LINUX_FROM_SCRATCH_POSITION} GREATER -1)
+                set(LINUX_FROM_SCRATCH 1)
+            else()
+                set(LINUX_FROM_SCRATCH 0)
+            endif()
+        else()
+            if(${LSB_RELEASE_DISTRO} MATCHES "Linux From Scratch")
+                set(LINUX_FROM_SCRATCH 1)
+            else()
+                set(LINUX_FROM_SCRATCH 0)
+            endif()
+        endif()
+    endif() 
+endif()
+
+
+unset(OS_RELEASE_DISTRO_REGEX)
+unset(DISTRO_RELEASE_REGEX)
+unset(LSB_RELEASE_REGEX)
+unset(TRIM_VARIABLE_REGEX)
+unset(REMOVE_NOT_MATCHED_OS)
+unset(REMOVE_NOT_MATCHED_DISTRO)
+unset(REMOVE_NOT_MATCHED_LSB)
+ 
