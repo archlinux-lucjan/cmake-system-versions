@@ -70,7 +70,7 @@ if(WINDOWS_XP)
 endif()
 
 if(NOT WINDOWS_FOUND)
-include(Platform/Linux/Distro/FindWindowsServer)
+include(Platform/Windows/Version/FindWindowsServer)
 endif()
 
 if(WINDOWS_SERVER)
@@ -79,7 +79,7 @@ if(WINDOWS_SERVER)
 endif()
 
 if(NOT WINDOWS_FOUND)
-include(Platform/Linux/Distro/FindOtherWindows)
+include(Platform/Windows/Version/FindOtherWindows)
 endif()
 
 if(NOT ${OTHER_WINDOWS_NAME} MATCHES "UNKNOWN")
