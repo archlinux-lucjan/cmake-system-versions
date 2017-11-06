@@ -10,7 +10,6 @@ set(REDHAT 0)
 set(LINUX_FROM_SCRATCH 0)
 set(MANDRIVA 0)
 set(SLACKWARE 0)
-set(MANDRAKE 0)
 set(PCLINUXOS 0)
 set(OPENSUSE 0)
 set(SLES 0)
@@ -66,15 +65,6 @@ endif()
 
 if(LINUX_MINT)
     set(DISTRO_NAME "LINUX MINT")
-    set(DISTRO_FOUND 1)
-endif()
-
-if(NOT DISTRO_FOUND)
-include(Platform/Linux/Distro/FindMandrake)
-endif()
-
-if(MANDRAKE)
-    set(DISTRO_NAME "MANDRAKE")
     set(DISTRO_FOUND 1)
 endif()
 
