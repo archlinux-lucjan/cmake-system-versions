@@ -1,0 +1,6 @@
+WINDOWS_NAME
+---
+
+Windows version name.
+
+If Windows version isn't detected, variable has ``UNKNOWN`` value, otherwise has only name without edition. For example ``MICROSOFT WINDOWS 10``. However, if Windows has been found other than on the cmake lists, can be holded version name with his edition then (like Microsoft Windows 10 Pro)
