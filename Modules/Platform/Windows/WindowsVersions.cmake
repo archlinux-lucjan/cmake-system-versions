@@ -19,6 +19,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 include(Platform/Windows/Version/FindWindows10)
 
+
 if(WINDOWS_10)
     set(WINDOWS_NAME "MICROSOFT WINDOWS 10")
     set(WINDOWS_FOUND 1)
@@ -82,13 +83,13 @@ if(NOT WINDOWS_FOUND)
 include(Platform/Windows/Version/FindOtherWindows)
 endif()
 
-if(NOT ${OTHER_WINDOWS_NAME} MATCHES "UNKNOWN")
+if(NOT "${OTHER_WINDOWS_NAME}" MATCHES "UNKNOWN" AND DEFINED OTHER_WINDOWS_NAME)
     set(WINDOWS_NAME ${OTHER_WINDOWS_NAME})
     set(WINDOWS_FOUND 1)
 endif()
 
 if(NOT WINDOWS_FOUND)
-    message(STATUS "Cannot detect a Windows version")
+    message(STATUS "Cannot detect a Windows version. Probably you haven't cmd.exe in your Windows version or cmd commands - ver, systeminfo, findstr or wmic have other arguments in your version. Check output of:\nsysteminfo | findstr /C:\"OS Name\"\n or \nwmic os get Caption /value\n or \nver\n\nin your cmd and open an issue on github: https://github.com/archlinux-lucjan/cmake-system-versions/issues")
 endif()
 
 unset(OTHER_WINDOWS_NAME)
