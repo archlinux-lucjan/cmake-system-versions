@@ -1,0 +1,6 @@
+DARWIN_NAME
+---
+
+Darwin system name.
+
+If Darwin system name isn't detected, variable has ``UNKNOWN`` value, otherwise has only name without version. For example ``MAC OS HIGH SIERRA``. However, if Darwin has been found other than on the cmake lists, can be holded name with his version then (like ``Mac OS X 10.8.4``) 
